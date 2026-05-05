@@ -433,6 +433,18 @@ export const en: NamespacedDict = {
     // Sort
     sort_manual: "Manual",
 
+    sort_priority: "Priority",
+    sort_due_date: "Due date",
+    sort_created_date: "Created date",
+    sort_title: "Title",
+    card_property_priority: "Priority",
+    card_property_description: "Description",
+    card_property_assignee: "Assignee",
+    card_property_due_date: "Due date",
+    card_property_project: "Project",
+    card_property_labels: "Labels",
+    card_property_child_progress: "Sub-issue progress",
+
     // Filter search keywords
     filter_no_assignee_kw: "no assignee",
     filter_unassigned_kw: "unassigned",

@@ -57,6 +57,8 @@ import {
   SORT_OPTIONS,
   CARD_PROPERTY_OPTIONS,
   type ActorFilterValue,
+  type SortField,
+  type CardProperties,
 } from "@multica/core/issues/stores/view-store";
 import { useViewStore, useViewStoreApi } from "@multica/core/issues/stores/view-store-context";
 import {
@@ -72,6 +74,24 @@ import type { Issue } from "@multica/core/types";
 
 const FILTER_ITEM_CLASS =
   "group/fitem pr-1.5! [&>[data-slot=dropdown-menu-checkbox-item-indicator]]:hidden";
+
+const SORT_LABEL_KEYS: Record<SortField, string> = {
+  position: "sort_manual",
+  priority: "sort_priority",
+  due_date: "sort_due_date",
+  created_at: "sort_created_date",
+  title: "sort_title",
+};
+
+const CARD_PROPERTY_LABEL_KEYS: Record<keyof CardProperties, string> = {
+  priority: "card_property_priority",
+  description: "card_property_description",
+  assignee: "card_property_assignee",
+  dueDate: "card_property_due_date",
+  project: "card_property_project",
+  labels: "card_property_labels",
+  childProgress: "card_property_child_progress",
+};
 
 function HoverCheck({ checked }: { checked: boolean }) {
   return (
@@ -496,8 +516,7 @@ export function IssuesHeader({ scopedIssues }: { scopedIssues: Issue[] }) {
       labelFilters,
     }) > 0;
 
-  const sortLabel =
-    SORT_OPTIONS.find((o) => o.value === sortBy)?.label ?? t("sort_manual");
+  const sortLabel = t(SORT_LABEL_KEYS[sortBy]);
 
   return (
     <div className="flex h-12 shrink-0 items-center justify-between px-4">
@@ -760,7 +779,7 @@ export function IssuesHeader({ scopedIssues }: { scopedIssues: Issue[] }) {
                         key={opt.value}
                         onClick={() => act.setSortBy(opt.value)}
                       >
-                        {opt.label}
+                        {t(SORT_LABEL_KEYS[opt.value])}
                       </DropdownMenuItem>
                     ))}
                   </DropdownMenuContent>
@@ -792,7 +811,7 @@ export function IssuesHeader({ scopedIssues }: { scopedIssues: Issue[] }) {
                     key={opt.key}
                     className="flex cursor-pointer items-center justify-between"
                   >
-                    <span className="text-sm">{opt.label}</span>
+                    <span className="text-sm">{t(CARD_PROPERTY_LABEL_KEYS[opt.key])}</span>
                     <Switch
                       size="sm"
                       checked={cardProperties[opt.key]}

@@ -433,6 +433,18 @@ export const zh: NamespacedDict = {
     // 排序
     sort_manual: "手动",
 
+    sort_priority: "优先级",
+    sort_due_date: "截止日期",
+    sort_created_date: "创建日期",
+    sort_title: "标题",
+    card_property_priority: "优先级",
+    card_property_description: "描述",
+    card_property_assignee: "处理人",
+    card_property_due_date: "截止日期",
+    card_property_project: "项目",
+    card_property_labels: "标签",
+    card_property_child_progress: "子事项进度",
+
     // 筛选搜索关键词
     filter_no_assignee_kw: "无处理人",
     filter_unassigned_kw: "未分配",
